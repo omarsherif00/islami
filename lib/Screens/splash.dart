@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:islami/Screens/home.dart';
 import 'package:islami/utils/AppAssets.dart';
+import 'package:islami/utils/AppColor.dart';
+import 'package:islami/utils/AppStyle.dart';
 
 class splashscreen extends StatefulWidget {
   static const String routeName="splash";
@@ -21,8 +23,13 @@ class _splashscreenState extends State<splashscreen> {
     }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Image.asset(AppAssets.splash),
+    return Container(
+      decoration: BoxDecoration(
+          image: DecorationImage(
+              fit: BoxFit.cover, image: AssetImage(AppAssets.splash))),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+      ),
     );
   }
 }
