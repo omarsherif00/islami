@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:islami/Screens/qurandetails.dart';
 import 'package:islami/utils/AppAssets.dart';
 import 'package:islami/utils/AppColor.dart';
 import 'package:islami/utils/AppStyle.dart';
 import 'package:islami/utils/constants.dart';
+import 'package:islami/utils/suraarguments.dart';
 
 class quran extends StatelessWidget {
   const quran({super.key});
@@ -53,17 +55,25 @@ class quran extends StatelessWidget {
       child: ListView.builder(
           itemCount: constants.suraNames.length,
           itemBuilder: (context, index) {
-            return Row(
-              children: [
-                Expanded(
-                    child: Text(constants.suraNames[index],
-                        textAlign: TextAlign.center,
-                        style: AppStyle.screentitle)),
-                Expanded(
-                    child: Text(constants.versesNumber[index].toString(),
-                        textAlign: TextAlign.center,
-                        style: AppStyle.screentitle))
-              ],
+            return InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, qurandetails.routeName,
+                    arguments: suraarguments(
+                        filename: "${index + 1}.txt",
+                        suraname: constants.suraNames[index]));
+              },
+              child: Row(
+                children: [
+                  Expanded(
+                      child: Text(constants.suraNames[index],
+                          textAlign: TextAlign.center,
+                          style: AppStyle.screentitle)),
+                  Expanded(
+                      child: Text(constants.versesNumber[index].toString(),
+                          textAlign: TextAlign.center,
+                          style: AppStyle.screentitle))
+                ],
+              ),
             );
           }));
 
