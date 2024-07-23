@@ -7,4 +7,5 @@ abstract class AppAssets{
   static const String mainlogo = "${defualtpath}logo.png";
   static const String sebha="${defualtpath}sebha.png";
   static const String radio = "${defualtpath}radio.png";
+  static const String hadethllogo = "${defualtpath}hadith_header.png";
 }
