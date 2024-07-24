@@ -53,6 +53,7 @@ class _ahadethdetailsState extends State<ahadethdetails> {
   }
 
   AppBar buildappbar() => AppBar(
+      leading: BackButton(color: Colors.black),
       title: Text(args.title, style: AppStyle.appbartextStyle),
       backgroundColor: AppColor.transparent,
       elevation: 0,

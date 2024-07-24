@@ -63,6 +63,7 @@ class _qurandetailsState extends State<qurandetails> {
   }
 
   AppBar buildappbar() => AppBar(
+        leading: BackButton(color: Colors.black),
         title: Text("${args.suraname}", style: AppStyle.appbartextStyle),
         backgroundColor: AppColor.transparent,
         elevation: 0,
@@ -71,7 +72,6 @@ class _qurandetailsState extends State<qurandetails> {
 
   Future readfile() async {
     filecontent = await rootBundle.loadString("assets/suras/${args.filename}");
-    print("$filecontent");
 
     List<String> Filelines = filecontent.split("\n");
 

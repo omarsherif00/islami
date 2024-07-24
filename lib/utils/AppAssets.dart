@@ -1,3 +1,5 @@
+import 'package:islami/utils/constants.dart';
+
 abstract class AppAssets{
   static const String defualtpath="assets/image/";
   static const String splash="${defualtpath}splash.png";
@@ -8,4 +10,6 @@ abstract class AppAssets{
   static const String sebha="${defualtpath}sebha.png";
   static const String radio = "${defualtpath}radio.png";
   static const String hadethllogo = "${defualtpath}hadith_header.png";
+  static const String sebhatop = "${defualtpath}headofseb7a.png";
+  static const String sebhabody = "${defualtpath}bodyofseb7a.png";
 }
