@@ -4,6 +4,7 @@ import 'package:islami/utils/AppAssets.dart';
 import 'package:islami/utils/AppColor.dart';
 import 'package:islami/utils/AppStyle.dart';
 import 'package:islami/utils/constants.dart';
+import 'package:islami/utils/extension.dart';
 import 'package:islami/utils/suraarguments.dart';
 
 class quran extends StatelessWidget {
@@ -25,13 +26,14 @@ class quran extends StatelessWidget {
                   Row(
                     children: [
                       Expanded(
-                          child: Text("sura",
+                          child: Text(context.applocalization.sura,
                               textAlign: TextAlign.center,
-                              style: AppStyle.screentitle)),
+                              style:
+                                  Theme.of(context).textTheme.displayMedium)),
                       Expanded(
-                          child: Text("verses",
+                          child: Text(context.applocalization.verses,
                               textAlign: TextAlign.center,
-                              style: AppStyle.screentitle))
+                              style: Theme.of(context).textTheme.displayMedium))
                     ],
                   ),
                   buildDivider(),
@@ -67,11 +69,11 @@ class quran extends StatelessWidget {
                   Expanded(
                       child: Text(constants.suraNames[index],
                           textAlign: TextAlign.center,
-                          style: AppStyle.screentitle)),
+                          style: Theme.of(context).textTheme.displayMedium)),
                   Expanded(
                       child: Text(constants.versesNumber[index].toString(),
                           textAlign: TextAlign.center,
-                          style: AppStyle.screentitle))
+                          style: Theme.of(context).textTheme.displayMedium))
                 ],
               ),
             );

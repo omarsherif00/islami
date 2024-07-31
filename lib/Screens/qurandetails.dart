@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:islami/utils/AppColor.dart';
 import 'package:islami/utils/AppStyle.dart';
 import 'package:islami/utils/suraarguments.dart';
+import 'package:islami/utils/themepro.dart';
+import 'package:provider/provider.dart';
 
 import '../utils/AppAssets.dart';
 
@@ -23,6 +25,7 @@ class _qurandetailsState extends State<qurandetails> {
   @override
   Widget build(BuildContext context) {
     args = ModalRoute.of(context)!.settings.arguments as suraarguments;
+    themeprovider tpro = Provider.of(context);
 
     if (filecontent.isEmpty) {
       readfile();
@@ -30,7 +33,7 @@ class _qurandetailsState extends State<qurandetails> {
 
     return Container(
       decoration: BoxDecoration(
-          image: DecorationImage(image: AssetImage(AppAssets.bg))),
+          image: DecorationImage(image: AssetImage(tpro.mainbackground))),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: buildappbar(),
@@ -64,10 +67,7 @@ class _qurandetailsState extends State<qurandetails> {
 
   AppBar buildappbar() => AppBar(
         leading: BackButton(color: Colors.black),
-        title: Text("${args.suraname}", style: AppStyle.appbartextStyle),
-        backgroundColor: AppColor.transparent,
-        elevation: 0,
-        centerTitle: true,
+        title: Text("${args.suraname}"),
       );
 
   Future readfile() async {

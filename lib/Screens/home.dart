@@ -3,10 +3,13 @@ import 'package:islami/Screens/ahadeth.dart';
 import 'package:islami/Screens/myRadio.dart';
 import 'package:islami/Screens/quran.dart';
 import 'package:islami/Screens/sebha.dart';
+import 'package:islami/Screens/settings.dart';
 import 'package:islami/utils/AppAssets.dart';
 import 'package:islami/utils/AppColor.dart';
 import 'package:islami/utils/AppStyle.dart';
-import 'package:islami/Screens/home.dart';
+import 'package:islami/utils/extension.dart';
+import 'package:islami/utils/themepro.dart';
+import 'package:provider/provider.dart';
 
 class home extends StatefulWidget {
   static const String routeName="home";
@@ -18,18 +21,19 @@ class home extends StatefulWidget {
 }
 
 class _homeState extends State<home> {
-  List<Widget> tabs = [quran(), ahadeth(), myRadio(), sebha()];
+  List<Widget> tabs = [quran(), ahadeth(), myRadio(), sebha(), Settings()];
   int selectedtabindex = 0;
   @override
   Widget build(BuildContext context) {
+    themeprovider tpro = Provider.of(context);
     return Container(
       decoration: BoxDecoration(
-          image: DecorationImage(image: AssetImage(AppAssets.bg))),
+          image: DecorationImage(image: AssetImage(tpro.mainbackground))),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: buildappbar(),
         bottomNavigationBar: Theme(
-          data: ThemeData(canvasColor: AppColor.primarycolor),
+          data: Theme.of(context).copyWith(canvasColor: tpro.bottomtheme),
           child: buildBottomNavigationBar(),
         ),
         body: tabs[selectedtabindex],
@@ -47,15 +51,20 @@ class _homeState extends State<home> {
       },
       items: [
         BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage(AppAssets.quran)), label: "quran"),
+            icon: ImageIcon(AssetImage(AppAssets.quran)),
+            label: context.applocalization.quran),
         BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage(AppAssets.openqu)), label: "ahadeth"),
+            icon: ImageIcon(AssetImage(AppAssets.openqu)),
+            label: context.applocalization.hadeeth),
         BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage(AppAssets.radio)), label: "radio"),
+            icon: ImageIcon(AssetImage(AppAssets.radio)),
+            label: context.applocalization.radio),
         BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage(AppAssets.sebha)), label: "sebha"),
+            icon: ImageIcon(AssetImage(AppAssets.sebha)),
+            label: context.applocalization.sebha),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.settings), label: context.applocalization.settings)
       ],
-      selectedItemColor: AppColor.accent,
       selectedIconTheme: IconThemeData(
         size: 36,
       ),
@@ -63,8 +72,6 @@ class _homeState extends State<home> {
   }
 
   AppBar buildappbar() => AppBar(
-      title: Text("islami", style: AppStyle.appbartextStyle),
-      backgroundColor: AppColor.transparent,
-      elevation: 0,
-      centerTitle: true);
+        title: Text(context.applocalization.islami),
+      );
 }

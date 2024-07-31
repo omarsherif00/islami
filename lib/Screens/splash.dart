@@ -26,7 +26,7 @@ class _splashscreenState extends State<splashscreen> {
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
-              fit: BoxFit.cover, image: AssetImage(AppAssets.splash))),
+              fit: BoxFit.cover, image: AssetImage(AppAssets.lightsplash))),
       child: Scaffold(
         backgroundColor: Colors.transparent,
       ),
