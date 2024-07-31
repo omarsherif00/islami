@@ -41,7 +41,7 @@ class _ahadethState extends State<ahadeth> {
                   Expanded(
                       child: Text("الاحاديث",
                           textAlign: TextAlign.center,
-                          style: AppStyle.screentitle)),
+                          style: Theme.of(context).textTheme.displayMedium)),
                 ],
               ),
               buildDivider(),
@@ -70,7 +70,7 @@ class _ahadethState extends State<ahadeth> {
                   Expanded(
                       child: Text(ahadethlist[index].title,
                           textAlign: TextAlign.center,
-                          style: AppStyle.screentitle)),
+                          style: Theme.of(context).textTheme.displayMedium)),
                 ],
               ),
             );

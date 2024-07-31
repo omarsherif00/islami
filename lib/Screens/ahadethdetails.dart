@@ -7,6 +7,8 @@ import 'package:islami/utils/AppColor.dart';
 import 'package:islami/utils/AppStyle.dart';
 import 'package:islami/utils/ahadetharguments.dart';
 import 'package:islami/utils/suraarguments.dart';
+import 'package:islami/utils/themepro.dart';
+import 'package:provider/provider.dart';
 
 class ahadethdetails extends StatefulWidget {
   static const String routeName = "ahadethdetails";
@@ -23,10 +25,10 @@ class _ahadethdetailsState extends State<ahadethdetails> {
   @override
   Widget build(BuildContext context) {
     args = ModalRoute.of(context)!.settings.arguments as ahadetharguments;
-
+    themeprovider tpro = Provider.of(context);
     return Container(
       decoration: BoxDecoration(
-          image: DecorationImage(image: AssetImage(AppAssets.bg))),
+          image: DecorationImage(image: AssetImage(tpro.mainbackground))),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: buildappbar(),
@@ -54,8 +56,6 @@ class _ahadethdetailsState extends State<ahadethdetails> {
 
   AppBar buildappbar() => AppBar(
       leading: BackButton(color: Colors.black),
-      title: Text(args.title, style: AppStyle.appbartextStyle),
-      backgroundColor: AppColor.transparent,
-      elevation: 0,
-      centerTitle: true);
+        title: Text(args.title),
+      );
 }
