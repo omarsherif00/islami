@@ -15,11 +15,32 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
-  late final String? language;
-  late final bool? mode;
   late langProviders pro;
   late themeprovider tpro;
 
+///////////////////////////////////////////////////////////////////
+
+  void initState() {
+    super.initState();
+    loadSavedData();
+  }
+
+  Future<void> loadSavedData() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final bool? isDarkMode = prefs.getBool('DarkMode');
+    final String? selectedLanguage = prefs.getString('lang');
+
+    if (isDarkMode != null) {
+      tpro.ctheme = isDarkMode ? ThemeMode.dark : ThemeMode.light;
+    }
+    if (selectedLanguage != null) {
+      pro.setlang = selectedLanguage;
+    }
+
+    setState(() {});
+  }
+
+////////////////////////////////////////////////////////////////
   @override
   Widget build(BuildContext context) {
     pro = Provider.of(context);
@@ -55,29 +76,26 @@ class _SettingsState extends State<Settings> {
   }
 
   BuilddropdownMenu() => DropdownButton(
+      dropdownColor: tpro.dropdownmenucolor,
       value: pro.selectedlanguage,
       items: [
         DropdownMenuItem(
             value: "ar",
             child: Text(
               "العربيه",
-              style:
-                  AppStyle.screentitle.copyWith(fontWeight: FontWeight.normal),
-            )),
+              style: Theme.of(context).textTheme.displayMedium)),
         DropdownMenuItem(
             value: "en",
             child: Text(
               "english",
-              style: AppStyle.appbartextStyle
-                  .copyWith(fontWeight: FontWeight.normal),
+              style: Theme.of(context).textTheme.displayMedium,
             ))
       ],
       isExpanded: true,
       onChanged: (newvalue) {
-        language = pro.selectedlanguage;
         pro.setlang = newvalue ?? pro.selectedlanguage;
-        savedata();
         setState(() {});
+        savedata();
       });
 
   BuildSwitch() => Switch(
@@ -85,16 +103,14 @@ class _SettingsState extends State<Settings> {
       value: tpro.isdarkthemedenabled,
       onChanged: (newvalue) {
         tpro.ctheme = newvalue ? ThemeMode.dark : ThemeMode.light;
-        savedata();
         setState(() {});
+        savedata();
       });
 
   Future savedata() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool("DarkMode", tpro.isdarkthemedenabled);
     await prefs.setString("lang", pro.selectedlanguage);
-
-    language = prefs.getString("lang");
-    mode = prefs.getBool("lang");
+    print("${prefs.getBool("DarkMode")}");
   }
 }

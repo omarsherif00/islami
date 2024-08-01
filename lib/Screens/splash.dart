@@ -3,6 +3,8 @@ import 'package:islami/Screens/home.dart';
 import 'package:islami/utils/AppAssets.dart';
 import 'package:islami/utils/AppColor.dart';
 import 'package:islami/utils/AppStyle.dart';
+import 'package:islami/utils/themepro.dart';
+import 'package:provider/provider.dart';
 
 class splashscreen extends StatefulWidget {
   static const String routeName="splash";
@@ -23,10 +25,11 @@ class _splashscreenState extends State<splashscreen> {
     }
   @override
   Widget build(BuildContext context) {
+    themeprovider tpro = Provider.of(context);
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
-              fit: BoxFit.cover, image: AssetImage(AppAssets.lightsplash))),
+              fit: BoxFit.cover, image: AssetImage(tpro.Splashmode))),
       child: Scaffold(
         backgroundColor: Colors.transparent,
       ),
