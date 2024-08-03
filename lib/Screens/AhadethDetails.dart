@@ -1,31 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:islami/Screens/ahadeth.dart';
-import 'package:islami/Screens/qurandetails.dart';
+import 'package:islami/Screens/Ahadeth.dart';
+import 'package:islami/Screens/QuranDetails.dart';
 import 'package:islami/utils/AppAssets.dart';
 import 'package:islami/utils/AppColor.dart';
 import 'package:islami/utils/AppStyle.dart';
-import 'package:islami/utils/ahadetharguments.dart';
-import 'package:islami/utils/suraarguments.dart';
-import 'package:islami/utils/themepro.dart';
+import 'package:islami/utils/AhadethArguments.dart';
+import 'package:islami/utils/SuraArguments.dart';
+import 'package:islami/utils/ThemePro.dart';
 import 'package:provider/provider.dart';
 
-class ahadethdetails extends StatefulWidget {
+class AhadethDetails extends StatefulWidget {
   static const String routeName = "ahadethdetails";
 
-  ahadethdetails({super.key});
+  const AhadethDetails({super.key});
 
   @override
-  State<ahadethdetails> createState() => _ahadethdetailsState();
+  State<AhadethDetails> createState() => _AhadethDetailsState();
 }
 
-class _ahadethdetailsState extends State<ahadethdetails> {
-  late ahadetharguments args;
+class _AhadethDetailsState extends State<AhadethDetails> {
+  late AhadethArguments args;
+  late ThemeProvider tpro;
 
   @override
   Widget build(BuildContext context) {
-    args = ModalRoute.of(context)!.settings.arguments as ahadetharguments;
-    themeprovider tpro = Provider.of(context);
+    args = ModalRoute.of(context)!.settings.arguments as AhadethArguments;
+    tpro = Provider.of(context);
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(image: AssetImage(tpro.mainbackground))),
@@ -41,8 +42,8 @@ class _ahadethdetailsState extends State<ahadethdetails> {
     return Container(
         height: MediaQuery.of(context).size.height * .7,
         width: MediaQuery.of(context).size.height * .6,
-        padding: EdgeInsets.all(8),
-        margin: EdgeInsets.fromLTRB(8, 12, 8, 8),
+        padding: const EdgeInsets.all(8),
+        margin: const EdgeInsets.fromLTRB(8, 12, 8, 8),
         decoration: BoxDecoration(
             color: Colors.white, borderRadius: BorderRadius.circular(25)),
         child: SingleChildScrollView(
@@ -55,7 +56,7 @@ class _ahadethdetailsState extends State<ahadethdetails> {
   }
 
   AppBar buildappbar() => AppBar(
-      leading: BackButton(color: Colors.black),
+        leading: BackButton(color: tpro.BackButtonColor),
         title: Text(args.title),
       );
 }

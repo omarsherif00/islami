@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:islami/Screens/splash.dart';
+import 'package:islami/Screens/Splash.dart';
 import 'package:islami/utils/AppAssets.dart';
 import 'package:islami/utils/AppColor.dart';
 import 'package:islami/utils/AppStyle.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class themeprovider extends ChangeNotifier {
+class ThemeProvider extends ChangeNotifier {
   Color get dropdownmenucolor =>
       isdarkthemedenabled ? AppColor.darkprimary : AppColor.primarycolor;
 
@@ -17,6 +18,9 @@ class themeprovider extends ChangeNotifier {
     notifyListeners();
   }
 
+  Color get BackButtonColor =>
+      isdarkthemedenabled ? Colors.white : Colors.black;
+
   String get Splashmode =>
       isdarkthemedenabled ? AppAssets.darksplash : AppAssets.lightsplash;
 
@@ -25,4 +29,11 @@ class themeprovider extends ChangeNotifier {
 
   Color get bottomtheme =>
       isdarkthemedenabled ? AppColor.darkprimary : AppColor.primarycolor;
+
+  Future<void> loadSavedData() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final bool isDarkMode = prefs.getBool('DarkMode') ?? false;
+    currenttheme = isDarkMode ? ThemeMode.dark : ThemeMode.light;
+    final String? selectedLanguage = prefs.getString('lang');
+  }
 }

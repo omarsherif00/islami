@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-class langProviders extends ChangeNotifier {
+class LangProviders extends ChangeNotifier {
   String selectedlanguage = "ar";
 
   set setlang(String newlang) {

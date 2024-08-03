@@ -2,30 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami/utils/AppColor.dart';
 import 'package:islami/utils/AppStyle.dart';
-import 'package:islami/utils/suraarguments.dart';
-import 'package:islami/utils/themepro.dart';
+import 'package:islami/utils/SuraArguments.dart';
+import 'package:islami/utils/ThemePro.dart';
 import 'package:provider/provider.dart';
 
 import '../utils/AppAssets.dart';
 
-class qurandetails extends StatefulWidget {
+class QuranDetails extends StatefulWidget {
   static const String routeName = "qurandetails";
 
-  qurandetails({super.key});
+  const QuranDetails({super.key});
 
   @override
-  State<qurandetails> createState() => _qurandetailsState();
+  State<QuranDetails> createState() => _QuranDetailsState();
 }
 
-class _qurandetailsState extends State<qurandetails> {
-  late suraarguments args;
-
+class _QuranDetailsState extends State<QuranDetails> {
+  late SuraArguments args;
+  late ThemeProvider tpro;
   String filecontent = "";
 
   @override
   Widget build(BuildContext context) {
-    args = ModalRoute.of(context)!.settings.arguments as suraarguments;
-    themeprovider tpro = Provider.of(context);
+    args = ModalRoute.of(context)!.settings.arguments as SuraArguments;
+    tpro = Provider.of(context);
 
     if (filecontent.isEmpty) {
       readfile();
@@ -45,15 +45,15 @@ class _qurandetailsState extends State<qurandetails> {
   }
 
   CircularProgressIndicator buildCircularProgressIndicator() {
-    return CircularProgressIndicator(color: AppColor.primarycolor);
+    return const CircularProgressIndicator(color: AppColor.primarycolor);
   }
 
   Widget buildContainer() {
     return Container(
         height: MediaQuery.of(context).size.height * .8,
         width: MediaQuery.of(context).size.height * .7,
-        padding: EdgeInsets.all(8),
-        margin: EdgeInsets.fromLTRB(8, 12, 8, 8),
+        padding: const EdgeInsets.all(8),
+        margin: const EdgeInsets.fromLTRB(8, 12, 8, 8),
         decoration: BoxDecoration(
             color: Colors.white, borderRadius: BorderRadius.circular(25)),
         child: SingleChildScrollView(
@@ -66,8 +66,8 @@ class _qurandetailsState extends State<qurandetails> {
   }
 
   AppBar buildappbar() => AppBar(
-        leading: BackButton(color: Colors.black),
-        title: Text("${args.suraname}"),
+        leading: BackButton(color: tpro.BackButtonColor),
+        title: Text(args.suraname),
       );
 
   Future readfile() async {

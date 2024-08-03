@@ -1,4 +1,4 @@
-import 'package:islami/utils/constants.dart';
+import 'package:islami/utils/Constants.dart';
 
 abstract class AppAssets{
   static const String defualtpath="assets/image/";

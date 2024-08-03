@@ -3,11 +3,11 @@ import 'package:islami/utils/AppAssets.dart';
 import 'package:islami/utils/AppColor.dart';
 import 'package:islami/utils/AppStyle.dart';
 
-class sebha extends StatefulWidget {
-  sebha({super.key});
+class Sebha extends StatefulWidget {
+  Sebha({super.key});
 
   @override
-  State<sebha> createState() => _sebhaState();
+  State<Sebha> createState() => _SebhaState();
 }
 
 double turns = 0.0;
@@ -16,11 +16,11 @@ List<String> azkar = ["سبحان الله", "الحمدلله", "الله اك�
 int sebhacounter = 0;
 int azkarcounter = 0;
 
-class _sebhaState extends State<sebha> {
+class _SebhaState extends State<Sebha> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 30),
+      margin: const EdgeInsets.only(top: 30),
       child: Center(
         child: buildStack(),
       ),
@@ -45,9 +45,9 @@ class _sebhaState extends State<sebha> {
       children: [
         AnimatedRotation(
             turns: turns,
-            duration: Duration(seconds: 1),
+            duration: const Duration(seconds: 1),
             child: Image.asset(AppAssets.sebhabody)),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Container(
@@ -55,14 +55,14 @@ class _sebhaState extends State<sebha> {
             borderRadius: BorderRadius.circular(25),
             color: AppColor.primarycolor,
           ),
-          padding: EdgeInsets.all(40),
-          child: Text("${sebhacounter}", style: AppStyle.screentitle),
+          padding: const EdgeInsets.all(40),
+          child: Text("$sebhacounter", style: AppStyle.screentitle),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         ElevatedButton(
-            style: ButtonStyle(
+            style: const ButtonStyle(
                 backgroundColor:
                     MaterialStatePropertyAll(AppColor.primarycolor)),
             onPressed: () {
