@@ -16,12 +16,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  ThemeProvider mytheme = ThemeProvider();
-  await mytheme.loadSavedData();
+  ThemeProvider Mytheme = ThemeProvider();
+  LangProviders MyLang = LangProviders();
+  await Mytheme.loadSavedData();
+  await MyLang.LoadSavedData();
   runApp(ChangeNotifierProvider(
-    create: (context) => mytheme,
-    child: ChangeNotifierProvider(
-        create: (context) => LangProviders(), child: MyApp()),
+    create: (context) => Mytheme,
+    child: ChangeNotifierProvider(create: (context) => MyLang, child: MyApp()),
   ));
 }
 

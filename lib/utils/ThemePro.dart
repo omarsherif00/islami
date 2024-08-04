@@ -3,6 +3,8 @@ import 'package:islami/Screens/Splash.dart';
 import 'package:islami/utils/AppAssets.dart';
 import 'package:islami/utils/AppColor.dart';
 import 'package:islami/utils/AppStyle.dart';
+import 'package:islami/utils/LangProvider.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ThemeProvider extends ChangeNotifier {
@@ -34,6 +36,5 @@ class ThemeProvider extends ChangeNotifier {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     final bool isDarkMode = prefs.getBool('DarkMode') ?? false;
     currenttheme = isDarkMode ? ThemeMode.dark : ThemeMode.light;
-    final String? selectedLanguage = prefs.getString('lang');
   }
 }
