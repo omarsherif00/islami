@@ -1,46 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:islami/utils/AppColor.dart';
 import 'package:islami/utils/AppStyle.dart';
-import 'package:islami/utils/extension.dart';
-import 'package:islami/utils/langprovider.dart';
-import 'package:islami/utils/themepro.dart';
+import 'package:islami/utils/Extension.dart';
+import 'package:islami/utils/LangProvider.dart';
+import 'package:islami/utils/ThemePro.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Settings extends StatefulWidget {
-  Settings({super.key});
+  const Settings({super.key});
 
   @override
   State<Settings> createState() => _SettingsState();
 }
 
 class _SettingsState extends State<Settings> {
-  late langProviders pro;
-  late themeprovider tpro;
+  late LangProviders pro;
+  late ThemeProvider tpro;
 
-///////////////////////////////////////////////////////////////////
-
-  void initState() {
-    super.initState();
-    loadSavedData();
-  }
-
-  Future<void> loadSavedData() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    final bool? isDarkMode = prefs.getBool('DarkMode');
-    final String? selectedLanguage = prefs.getString('lang');
-
-    if (isDarkMode != null) {
-      tpro.ctheme = isDarkMode ? ThemeMode.dark : ThemeMode.light;
-    }
-    if (selectedLanguage != null) {
-      pro.setlang = selectedLanguage;
-    }
-
-    setState(() {});
-  }
-
-////////////////////////////////////////////////////////////////
   @override
   Widget build(BuildContext context) {
     pro = Provider.of(context);
@@ -48,7 +25,7 @@ class _SettingsState extends State<Settings> {
 
     return Column(
       children: [
-        SizedBox(
+        const SizedBox(
           height: 55,
         ),
         Text(context.applocalization.language,
@@ -57,7 +34,7 @@ class _SettingsState extends State<Settings> {
           child: BuilddropdownMenu(),
           width: double.infinity,
         ),
-        SizedBox(
+        const SizedBox(
           height: 55,
         ),
         Row(
@@ -65,7 +42,7 @@ class _SettingsState extends State<Settings> {
           children: [
             Text(context.applocalization.theme,
                 style: Theme.of(context).textTheme.displayMedium),
-            SizedBox(
+            const SizedBox(
               width: 30,
             ),
             BuildSwitch()

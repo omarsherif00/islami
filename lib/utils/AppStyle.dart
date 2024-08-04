@@ -10,16 +10,16 @@ abstract class AppStyle{
   static const TextStyle screentitle=TextStyle(color: AppColor.accent,fontSize: 25,fontWeight: FontWeight.w600);
 
   static ThemeData Lighttheme = ThemeData(
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
           backgroundColor: Colors.transparent,
           centerTitle: true,
           elevation: 0,
           titleTextStyle: appbartextStyle),
       scaffoldBackgroundColor: Colors.transparent,
       primaryColor: AppColor.primarycolor,
-      textTheme:
-          TextTheme(displayLarge: appbartextStyle, displayMedium: screentitle),
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      textTheme: const TextTheme(
+          displayLarge: appbartextStyle, displayMedium: screentitle),
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           selectedItemColor: AppColor.accent,
           unselectedItemColor: Colors.white));
 
@@ -34,7 +34,7 @@ abstract class AppStyle{
       textTheme: TextTheme(
           displayLarge: appbartextStyle,
           displayMedium: screentitle.copyWith(color: Colors.white)),
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           selectedItemColor: AppColor.accentdark,
           unselectedItemColor: Colors.white));
 }

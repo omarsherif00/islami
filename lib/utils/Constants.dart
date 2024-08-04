@@ -1,4 +1,4 @@
-abstract class constants {
+abstract class Constants {
   static const List<String> suraNames = [
     "الفاتحه",
     "البقرة",

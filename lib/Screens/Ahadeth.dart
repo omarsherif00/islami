@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:islami/Screens/ahadethdetails.dart';
-import 'package:islami/Screens/qurandetails.dart';
+import 'package:islami/Screens/AhadethDetails.dart';
+import 'package:islami/Screens/QuranDetails.dart';
 import 'package:islami/utils/AppAssets.dart';
 import 'package:islami/utils/AppColor.dart';
 import 'package:islami/utils/AppStyle.dart';
-import 'package:islami/utils/ahadetharguments.dart';
-import 'package:islami/utils/constants.dart';
-import 'package:islami/utils/suraarguments.dart';
+import 'package:islami/utils/AhadethArguments.dart';
+import 'package:islami/utils/Constants.dart';
+import 'package:islami/utils/SuraArguments.dart';
 
-class ahadeth extends StatefulWidget {
-  ahadeth({super.key});
+class Ahadeth extends StatefulWidget {
+  const Ahadeth({super.key});
 
   @override
-  State<ahadeth> createState() => _ahadethState();
+  State<Ahadeth> createState() => _AhadethState();
 }
 
-class _ahadethState extends State<ahadeth> {
-  List<ahadetharguments> ahadethlist = [];
+class _AhadethState extends State<Ahadeth> {
+  List<AhadethArguments> ahadethlist = [];
 
   @override
   void initState() {
@@ -53,7 +53,8 @@ class _ahadethState extends State<ahadeth> {
     );
   }
 
-  Divider buildDivider() => Divider(color: AppColor.primarycolor, thickness: 3);
+  Divider buildDivider() =>
+      const Divider(color: AppColor.primarycolor, thickness: 3);
 
   Expanded buildListview() => Expanded(
       flex: 7,
@@ -62,7 +63,7 @@ class _ahadethState extends State<ahadeth> {
           itemBuilder: (context, index) {
             return InkWell(
               onTap: () {
-                Navigator.pushNamed(context, ahadethdetails.routeName,
+                Navigator.pushNamed(context, AhadethDetails.routeName,
                     arguments: ahadethlist[index]);
               },
               child: Row(
@@ -88,7 +89,7 @@ class _ahadethState extends State<ahadeth> {
       lines.removeAt(0);
       String hadethcontent = lines.join();
       ahadethlist
-          .add(ahadetharguments(title: hadethname, content: hadethcontent));
+          .add(AhadethArguments(title: hadethname, content: hadethcontent));
       setState(() {});
     }
   }

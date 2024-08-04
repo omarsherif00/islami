@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:islami/Screens/qurandetails.dart';
+import 'package:islami/Screens/QuranDetails.dart';
 import 'package:islami/utils/AppAssets.dart';
 import 'package:islami/utils/AppColor.dart';
 import 'package:islami/utils/AppStyle.dart';
-import 'package:islami/utils/constants.dart';
-import 'package:islami/utils/extension.dart';
-import 'package:islami/utils/suraarguments.dart';
+import 'package:islami/utils/Constants.dart';
+import 'package:islami/utils/Extension.dart';
+import 'package:islami/utils/SuraArguments.dart';
 
-class quran extends StatelessWidget {
-  const quran({super.key});
+class Quran extends StatelessWidget {
+  const Quran({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class quran extends StatelessWidget {
                   buildListview()
                 ],
               ),
-              VerticalDivider(
+              const VerticalDivider(
                 thickness: 3,
                 color: AppColor.primarycolor,
                 indent: 10,
@@ -55,23 +55,23 @@ class quran extends StatelessWidget {
   Expanded buildListview() => Expanded(
       flex: 7,
       child: ListView.builder(
-          itemCount: constants.suraNames.length,
+          itemCount: Constants.suraNames.length,
           itemBuilder: (context, index) {
             return InkWell(
               onTap: () {
-                Navigator.pushNamed(context, qurandetails.routeName,
-                    arguments: suraarguments(
+                Navigator.pushNamed(context, QuranDetails.routeName,
+                    arguments: SuraArguments(
                         filename: "${index + 1}.txt",
-                        suraname: constants.suraNames[index]));
+                        suraname: Constants.suraNames[index]));
               },
               child: Row(
                 children: [
                   Expanded(
-                      child: Text(constants.suraNames[index],
+                      child: Text(Constants.suraNames[index],
                           textAlign: TextAlign.center,
                           style: Theme.of(context).textTheme.displayMedium)),
                   Expanded(
-                      child: Text(constants.versesNumber[index].toString(),
+                      child: Text(Constants.versesNumber[index].toString(),
                           textAlign: TextAlign.center,
                           style: Theme.of(context).textTheme.displayMedium))
                 ],
@@ -79,5 +79,6 @@ class quran extends StatelessWidget {
             );
           }));
 
-  Divider buildDivider() => Divider(color: AppColor.primarycolor, thickness: 3);
+  Divider buildDivider() =>
+      const Divider(color: AppColor.primarycolor, thickness: 3);
 }

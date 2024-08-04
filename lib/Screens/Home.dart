@@ -1,31 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:islami/Screens/ahadeth.dart';
-import 'package:islami/Screens/myRadio.dart';
-import 'package:islami/Screens/quran.dart';
-import 'package:islami/Screens/sebha.dart';
-import 'package:islami/Screens/settings.dart';
+import 'package:islami/Screens/Ahadeth.dart';
+import 'package:islami/Screens/MyRadio.dart';
+import 'package:islami/Screens/Quran.dart';
+import 'package:islami/Screens/Sebha.dart';
+import 'package:islami/Screens/Settings.dart';
 import 'package:islami/utils/AppAssets.dart';
 import 'package:islami/utils/AppColor.dart';
 import 'package:islami/utils/AppStyle.dart';
-import 'package:islami/utils/extension.dart';
-import 'package:islami/utils/themepro.dart';
+import 'package:islami/utils/Extension.dart';
+import 'package:islami/utils/ThemePro.dart';
 import 'package:provider/provider.dart';
 
-class home extends StatefulWidget {
+class Home extends StatefulWidget {
   static const String routeName="home";
 
-  home({super.key});
+  Home({super.key});
 
   @override
-  State<home> createState() => _homeState();
+  State<Home> createState() => _HomeState();
 }
 
-class _homeState extends State<home> {
-  List<Widget> tabs = [quran(), ahadeth(), myRadio(), sebha(), Settings()];
+class _HomeState extends State<Home> {
+  List<Widget> tabs = [Quran(), Ahadeth(), MyRadio(), Sebha(), Settings()];
   int selectedtabindex = 0;
   @override
   Widget build(BuildContext context) {
-    themeprovider tpro = Provider.of(context);
+    ThemeProvider tpro = Provider.of(context);
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(image: AssetImage(tpro.mainbackground))),
